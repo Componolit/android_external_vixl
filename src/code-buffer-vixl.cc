@@ -166,7 +166,7 @@ void CodeBuffer::Grow(size_t new_capacity) {
   buffer_ = static_cast<byte*>(realloc(buffer_, new_capacity));
   VIXL_CHECK(buffer_ != NULL);
 #elif defined(VIXL_CODE_BUFFER_MMAP)
-#ifdef __APPLE__
+#if defined (__APPLE__) || defined(__GENODE__)
   // TODO: Avoid using VIXL_CODE_BUFFER_MMAP.
   // Don't use false to avoid having the compiler realize it's a noreturn
   // method.
